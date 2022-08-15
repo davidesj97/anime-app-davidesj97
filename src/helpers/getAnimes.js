@@ -7,7 +7,7 @@ export const getAnimes = async (category) => {
   const animes = data.map(anime => ({
     id: anime.id,
     title: anime.attributes.titles.en_jp,
-    image: anime.attributes.posterImage.original,
+    image: anime.attributes.posterImage.tiny,
     description: anime.attributes.description,
     startDate: anime.attributes.startDate,
     endDate: anime.attributes.endDate,

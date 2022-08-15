@@ -5,7 +5,7 @@ import { AnimeApp } from "./AnimeApp";
 import './styles.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <AnimeApp />
-  // </React.StrictMode>
+  </React.StrictMode>
 )
