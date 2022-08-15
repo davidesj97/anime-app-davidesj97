@@ -1,27 +1,29 @@
 import { useState } from 'react'
 import { AddCategory } from './components/AddCategory';
+import { AnimeGrid } from './components/AnimeGrid';
 
 export const AnimeApp = () => {
 
   const [categories, setCategories] = useState([]);
 
-  const onAddCategory = () => {
-    setCategories([...categories, "Naruto"])
+  const onAddCategory = (newCategory) => {
+    if(categories.includes(newCategory)) return;
+    setCategories([newCategory, ...categories])
   }
 
   return (
     <>
-      {/* Titulo */}
       <h1>AnimeApp</h1>
 
-      {/* Input busqueda */}
-      <AddCategory />
+      <AddCategory
+        onNewCategory={(value) => onAddCategory(value)}
+      />
 
-      {/* Listado */}
-      <button onClick={onAddCategory}>Agregar</button>
-      <ul>
-        {categories.map(category => (<li key={category}>{category}</li>))}
-      </ul>
+        {
+          categories.map(category => (
+            <AnimeGrid key={category} category={category} />
+          ))
+        }
     </>
   )
 }
