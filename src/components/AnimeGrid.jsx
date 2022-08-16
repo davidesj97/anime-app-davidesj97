@@ -1,25 +1,17 @@
-import { useEffect, useState } from "react";
 
-import { getAnimes } from "../helpers/getAnimes";
+import { useFetchAnimes } from "../hooks/useFetchAnimes";
 import { AnimeGridItem } from "./AnimeGridItem";
 
 export const AnimeGrid = ({category}) => {
 
-  const [animes, setAnimes] = useState([]);
-
-  const getListAnimes = async () => {
-    const newAnimes = await getAnimes(category);
-    setAnimes(newAnimes);
-  }
-
-  useEffect(() => {
-    getListAnimes();
-  }, [])
-
+  const {animes, isLoading} = useFetchAnimes(category);
 
   return (
     <>
       <h3>{ category }</h3>
+      {
+        isLoading && (<h2>Cargando...</h2>)
+      }
       <div className="card-grid">
         {
           animes.map(anime => (
