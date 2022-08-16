@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { getAnimes } from "../helpers/getAnimes";
+import { AnimeGridItem } from "./AnimeGridItem";
 
 export const AnimeGrid = ({category}) => {
 
@@ -18,17 +20,16 @@ export const AnimeGrid = ({category}) => {
   return (
     <>
       <h3>{ category }</h3>
-      <ul>
+      <div className="card-grid">
         {
           animes.map(anime => (
-            <div key={anime.id}>
-              <img src={anime.image} alt={anime.title} />
-              <li>{anime.title}</li>
-              <p>{anime.description}</p>
-            </div>
+            <AnimeGridItem
+              key={anime.id}
+              {...anime}
+            />
           ))
         }
-      </ul>
+      </div>
     </>
   )
 }
