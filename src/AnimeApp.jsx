@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { AddCategory } from './components/AddCategory';
-import { AnimeGrid } from './components/AnimeGrid';
+import { AddCategory, AnimeGrid } from './components';
 
 export const AnimeApp = () => {
 
